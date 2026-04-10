@@ -20,14 +20,14 @@ function duracao(param_segundos) {
   return minutos + ":" + segundos;
 }
 
-function f3(lista, n) {
-  var resultado = null;
+function buscarMusica(lista, nomeBuscado) {
+  var musicaEncontrada = null;
   for (var i = 0; i < lista.length; i++) {
-    if (lista[i].nome == n) {
-      resultado = lista[i];
+    if (lista[i].nome == nomeBuscado) {
+      musicaEncontrada = lista[i];
     }
   }
-  return resultado;
+  return musicaEncontrada;
 }
 
 function testarVolume(volume) {
@@ -103,12 +103,12 @@ function ordenarEExibir(lista) {
   return cp;
 }
 
-function f11(lista, p1, p2) {
-  if (p1 < 0 || p1 >= lista.length) return;
-  if (p2 < 0 || p2 >= lista.length) return;
-  var tmp = lista[p1];
-  lista[p1] = lista[p2];
-  lista[p2] = tmp;
+function trocarPosicoes(lista, posicaoUm, posicaoDois) {
+  if (posicaoUm < 0 || posicaoUm >= lista.length) return;
+  if (posicaoDois < 0 || posicaoDois >= lista.length) return;
+  var auxiliar = lista[posicaoUm];
+  lista[posicaoUm] = lista[posicaoDois];
+  lista[posicaoDois] = auxiliar;
 }
 
 function f12(lista, lim) {
@@ -123,25 +123,25 @@ function f12(lista, lim) {
 
 function adicionarDaInterface(nome, artista, genero, minutos, segundos) {
   var objeto = {};
-  obj.nome = nome;
-  obj.artista = artista;
-  obj.genero = genero;
-  obj.duracao = f1(minutos, segundos);
-  obj.fav = false;
+  objeto.nome = nome;
+  objeto.artista = artista;
+  objeto.genero = genero;
+  objeto.duracao = f1(minutos, segundos);
+  objeto.fav = false;
   listaMusica.push(objeto);
 }
 
 function mostra() {
   document.getElementById("musica0").innerHTML =
-    listaMusica[0].nome + " - " + listaMusica[0].artista + " (" + f2(listaMusica[0].duracao) + ")";
+    listaMusica[0].nome + " - " + listaMusica[0].artista + " (" + duracao(listaMusica[0].duracao) + ")";
   document.getElementById("musica1").innerHTML =
-    listaMusica[1].nome + " - " + listaMusica[1].artista + " (" + f2(listaMusica[1].duracao) + ")";
+    listaMusica[1].nome + " - " + listaMusica[1].artista + " (" + duracao(listaMusica[1].duracao) + ")";
   document.getElementById("musica2").innerHTML =
-    listaMusica[2].nome + " - " + listaMusica[2].artista + " (" + f2(listaMusica[2].duracao) + ")";
+    listaMusica[2].nome + " - " + listaMusica[2].artista + " (" + duracao(listaMusica[2].duracao) + ")";
   document.getElementById("musica3").innerHTML =
-    listaMusica[3].nome + " - " + listaMusica[3].artista + " (" + f2(listaMusica[3].duracao) + ")";
+    listaMusica[3].nome + " - " + listaMusica[3].artista + " (" + duracao(listaMusica[3].duracao) + ")";
   document.getElementById("musica4").innerHTML =
-    listaMusica[4].nome + " - " + listaMusica[4].artista + " (" + f2(listaMusica[4].duracao) + ")";
+    listaMusica[4].nome + " - " + listaMusica[4].artista + " (" + duracao(listaMusica[4].duracao) + ")";
 }
 
 function gerarEExibirRelatoriol() {
